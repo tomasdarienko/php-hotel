@@ -65,40 +65,57 @@ $hotels = [
      <meta charset="UTF-8">
      <meta name="viewport" content="width=, initial-scale=1.0">
      <title>hotel</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
 
 
-     <?php foreach ($hotels as $key => $value) { ?>
-          <ul>
-               <li>
-                    <?php echo $value['name'] ?>
-                    <ul>
-                         <li>
-                         <?php echo $value['description'] ?>
-                         </li>
-                         <li>
-                         <?php 
-                         if($value['parking']==true){
-                              echo "hotel con parcheggio";
-                         }
-                         else{
-                              echo "hotel senza parcheggio";
-                         }
-                          ?>
-                         </li>
-                         <li>
-                         <?php echo "voto: ".$value['vote'] ?>
-                         </li>
-                         <li>
-                         <?php echo $value['distance_to_center'].' km' ?>
-                         </li>
-                    </ul>
-               </li>
-          </ul>
+     <table class="table">
+          <thead>
+               <tr>
+                    <th scope="col"> </th>
+                    <th scope="col">Nome hotel</th>
+                    <th scope="col">descrizione</th>
+                    <th scope="col">parcheggio</th>
+                    <th scope="col">voto</th>
+                    <th scope="col">distanza dal centro</th>
+               </tr>
+          </thead>
+          <tbody>
+               <?php foreach ($hotels as $key => $value) { ?>
 
-     <?php } ?>
+
+                    <tr>
+                         <th scope="row"><?php echo ($key + 1) ?></th>
+                         <td>
+                              <?php echo $value['name'] ?>
+                         </td>
+                         <td>
+                              <?php echo $value['description'] ?>
+                         </td>
+                         <td>
+                              <?php
+                              if ($value['parking'] == true) {
+                                   echo " con ";
+                              } else {
+                                   echo " senza ";
+                              }
+                              ?>
+                         </td>
+                         <td>
+                              <?php echo $value['vote'] ?>
+                         </td>
+                         <td>
+                              <?php echo $value['distance_to_center']," km" ?>
+                         </td>
+                    </tr>
+
+               </tbody>
+          <?php } ?>
+     </table>``
+
 </body>
 
 </html>
